@@ -106,7 +106,10 @@ class MyHomePage extends StatelessWidget {
               fontWeight: FontWeight.bold,
             ),
           ),
-          actions: [Icon(Icons.search)],
+          actions: [Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Icon(Icons.search,  color: Color.fromARGB(255, 255, 200, 0),),
+          ), ],
         ),
         body: Column(
           children: [
@@ -149,7 +152,7 @@ class MyHomePage extends StatelessWidget {
               child: Row(
                 children: [
                   Text(
-                    "34",
+                    "34°",
                     style: TextStyle(fontSize: 80),
                   ),
                   SizedBox(
@@ -157,7 +160,7 @@ class MyHomePage extends StatelessWidget {
                   ),
                   Icon(
                     Icons.cloud,
-                    size: 60,
+                    size: 80,
                   )
                 ],
               ),
@@ -177,26 +180,34 @@ class MyHomePage extends StatelessWidget {
                     Column(
                       children: [Icon(Icons.thermostat,size: 80,), Row(
                         children: [
-                          Text("34",style: TextStyle(fontSize: 20),),Icon(Icons.heat_pump)
+                          Text("34°",style: TextStyle(fontSize: 20),)
 
-                          // 
-                          // 
-                          // 
-                          // 
-                          // 
-
+                         
                         ],
                       )],
-                    ),
+                    ),Spacer(),
                     Column(
-                      children: [Icon(Icons.water_drop,size: 80), Text("34",style: TextStyle(fontSize: 20))],
-                    ),
-                    Column(
-                      children: [Icon(Icons.air,size: 80), Text("34",style: TextStyle(fontSize: 20))],
+                      children: [Icon(Icons.water_drop,size: 80), Row(
+                        children: [
+                          Text("49",style: TextStyle(fontSize: 20)),Icon(Icons.percent,)
+                        ],
+                      ),],
+                    ),Spacer(),
+                    Padding(
+                      padding: const EdgeInsets.only(right: 10),
+                      child: Column(
+                        children: [Icon(Icons.air,size: 80), Text("3 km/h",style: TextStyle(fontSize: 20))],
+                      ),
                     )
                   ],
                 ),
               ),
+            ), Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text("Today", style: TextStyle(
+                color: Color.fromARGB(255, 255, 200, 0),
+                fontWeight: FontWeight.bold,fontSize: 20
+              ),),
             )
           ],
         ));
