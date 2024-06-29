@@ -208,6 +208,14 @@ class MyHomePage extends StatelessWidget {
                 color: Color.fromARGB(255, 255, 200, 0),
                 fontWeight: FontWeight.bold,fontSize: 20
               ),),
+            ),
+            SizedBox(height: 180,
+              child: ListView.builder(itemBuilder: (context, index) {
+                return Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Container(height: 150,width: 150,decoration: BoxDecoration(borderRadius: BorderRadius.circular(20),color: Colors.blueAccent,),),
+                );
+              },itemCount: 3,scrollDirection: Axis.horizontal,),
             )
           ],
         ));
