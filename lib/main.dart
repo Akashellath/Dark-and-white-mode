@@ -1,7 +1,6 @@
-
-
 import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -32,7 +31,7 @@ class MyApp extends StatelessWidget {
         title: 'Adaptive Theme Demo',
         theme: theme,
         darkTheme: darkTheme,
-        home: const MyHomePage(),
+        home:  MyHomePage(),
         debugShowCheckedModeBanner: false,
       ),
       debugShowFloatingThemeButton: true,
@@ -41,10 +40,11 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatelessWidget {
-  const MyHomePage({super.key});
-
+   MyHomePage({super.key});
+  List time =[ "9:00 AM","12:00 PM","04:00 PM"];
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
         drawer: Drawer(
             child: Padding(
@@ -106,10 +106,15 @@ class MyHomePage extends StatelessWidget {
               fontWeight: FontWeight.bold,
             ),
           ),
-          actions: [Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Icon(Icons.search,  color: Color.fromARGB(255, 255, 200, 0),),
-          ), ],
+          actions: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Icon(
+                Icons.search,
+                color: Color.fromARGB(255, 255, 200, 0),
+              ),
+            ),
+          ],
         ),
         body: Column(
           children: [
@@ -178,46 +183,158 @@ class MyHomePage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Column(
-                      children: [Icon(Icons.thermostat,size: 80,), Row(
-                        children: [
-                          Text("34°",style: TextStyle(fontSize: 20),)
-
-                         
-                        ],
-                      )],
-                    ),Spacer(),
+                      children: [
+                        Icon(
+                          Icons.thermostat,
+                          size: 80,
+                        ),
+                        Row(
+                          children: [
+                            Text(
+                              "34°",
+                              style: TextStyle(fontSize: 20),
+                            )
+                          ],
+                        )
+                      ],
+                    ),
+                    Spacer(),
                     Column(
-                      children: [Icon(Icons.water_drop,size: 80), Row(
-                        children: [
-                          Text("49",style: TextStyle(fontSize: 20)),Icon(Icons.percent,)
-                        ],
-                      ),],
-                    ),Spacer(),
+                      children: [
+                        Icon(Icons.water_drop, size: 80),
+                        Row(
+                          children: [
+                            Text("49", style: TextStyle(fontSize: 20)),
+                            Icon(
+                              Icons.percent,
+                            )
+                          ],
+                        ),
+                      ],
+                    ),
+                    Spacer(),
                     Padding(
                       padding: const EdgeInsets.only(right: 10),
                       child: Column(
-                        children: [Icon(Icons.air,size: 80), Text("3 km/h",style: TextStyle(fontSize: 20))],
+                        children: [
+                          Icon(Icons.air, size: 80),
+                          Text("3 km/h", style: TextStyle(fontSize: 20))
+                        ],
                       ),
                     )
                   ],
                 ),
               ),
-            ), Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text("Today", style: TextStyle(
-                color: Color.fromARGB(255, 255, 200, 0),
-                fontWeight: FontWeight.bold,fontSize: 20
-              ),),
             ),
-            SizedBox(height: 180,
-              child: ListView.builder(itemBuilder: (context, index) {
-                return Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Container(height: 150,width: 150,decoration: BoxDecoration(borderRadius: BorderRadius.circular(20),color: Colors.blueAccent,),),
-                );
-              },itemCount: 3,scrollDirection: Axis.horizontal,),
-            )
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(
+                "Today",
+                style: TextStyle(
+                    color: Color.fromARGB(255, 255, 200, 0),
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20),
+              ),
+            ),
+            SizedBox(
+              height: 180,
+              child: ListView.builder(
+                itemBuilder: (context, index) {
+                  return Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Container(
+                      child: Column(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text("12:00 AM",style: TextStyle(color: Colors.black,fontSize: 20,fontWeight: FontWeight.bold),),
+                          ),Padding(
+                            padding: const EdgeInsets.only(right: 30,left: 30),
+                            child: Row(
+                                            children: [
+                                              Text(
+                                                "34°",
+                                                style: TextStyle(fontSize: 20),
+                                              ),
+                                              Spacer(
+                                               
+                                              ),
+                                              Icon(
+                                                Icons.cloud,
+                                                size: 20,
+                                              )
+                                            ],
+                                          ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(right: 30,left: 30,top: 15),
+                            child: Row(
+                                            children: [
+                                              Icon(
+                                                Icons.water_drop,
+                                                size: 20,
+                                              ),
+                                              Spacer(
+                                               
+                                              ),
+                                              Icon(
+                                                Icons.air,
+                                                size: 20,
+                                              )
+                                            ],
+                                          ),
+                          ), Padding(
+                            padding: const EdgeInsets.only(right: 30,left: 30,),
+                            child: Row(
+                                            children: [
+                                              Text("49%"),
+                                              Spacer(
+                                               
+                                              ),
+                                               Text("3 km/h"),
+                                            ],
+                                          ),
+                          ),
+                        ],
+                      ),
+                      height: 150,
+                      width: 150,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        color: const Color.fromARGB(255, 126, 149, 189),
+                      ),
+                    ),
+                  );
+                },
+                itemCount: 3,
+                scrollDirection: Axis.horizontal,
+              ),
+            ),
+            Text(
+                "5 Days Forcast",
+                style: TextStyle(
+                    color: Color.fromARGB(255, 255, 200, 0),
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20),
+              ),
+            
           ],
-        ));
+        ), bottomNavigationBar: BottomNavigationBar(
+    items: const <BottomNavigationBarItem>[
+      BottomNavigationBarItem(
+        icon: Icon(Icons.timelapse),
+        label: '9 PM',
+      ),
+      BottomNavigationBarItem(
+        icon: Icon(Icons.cloud),
+        label: 'cloudy',
+      ),
+      BottomNavigationBarItem(
+        icon: Icon(Icons.thermostat),
+        label: '26°',
+      ),
+    ],
+  ),
+);
   }
 }
