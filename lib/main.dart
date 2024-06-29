@@ -1,6 +1,11 @@
+
+
 import 'package:adaptive_theme/adaptive_theme.dart';
+import 'package:dark_and_white/history.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -49,23 +54,32 @@ class MyHomePage extends StatelessWidget {
         drawer: Drawer(
             child: Padding(
           padding: const EdgeInsets.only(top: 50, left: 10, bottom: 20),
-          child: Column(
+          child: Column(mainAxisAlignment: MainAxisAlignment.start,crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Row(
-                children: [
-                  Icon(
-                    Icons.history,
-                    size: 30,
-                  ),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Text(
-                    "History",
-                    style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-                  )
-                ],
+GestureDetector(  onTap: () {
+                 Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => historyPagge(),
+                        ));
+                },
+                child: Container(height: 50,width: 170,   child:  Row(
+                  children: [
+                    Icon(
+                      Icons.history,
+                      size: 30,
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Text(
+                      "History",
+                      style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                    )
+                  ],
+                ) ,),
               ),
+            
               Row(
                 children: [
                   Icon(
@@ -139,7 +153,7 @@ class MyHomePage extends StatelessWidget {
                   ),
                   Text(
                     "Kottakkal",
-                    style: TextStyle(fontSize: 30),
+                    style: GoogleFonts.rajdhani(fontSize: 30),
                   )
                 ],
               ),
@@ -247,7 +261,7 @@ class MyHomePage extends StatelessWidget {
                         children: [
                           Padding(
                             padding: const EdgeInsets.all(8.0),
-                            child: Text("12:00 AM",style: TextStyle(color: Colors.black,fontSize: 20,fontWeight: FontWeight.bold),),
+                            child: Text("12:00 AM",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
                           ),Padding(
                             padding: const EdgeInsets.only(right: 30,left: 30),
                             child: Row(
